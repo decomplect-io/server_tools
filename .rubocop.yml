@@ -1,0 +1,21 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+  Exclude:
+    - 'vendor/bundle/**/*'
+    - 'bin/**/*'
+
+StringLiterals:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Style/AccessModifierIndentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
