@@ -9,7 +9,7 @@ module ServerTools
     end
 
     def command
-      <<-COMMAND.squish
+      <<-COMMAND
         ssh #{hostname}
         #{ssh_opts(options)}
         -t
