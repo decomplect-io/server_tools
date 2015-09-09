@@ -11,6 +11,7 @@ module ServerTools
     def command
       [
         "ssh #{hostname}",
+        "-t -t",
         "#{ssh_opts(options)}",
         "sudo /usr/bin/chef-client -o'#{options[:roles].join(',')}'"
       ].join(' ')

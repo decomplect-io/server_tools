@@ -13,7 +13,7 @@ describe ServerTools::InstallDebPackage do
   describe '#copy_command' do
     it 'returns the correct command' do
       install_deb_package = ServerTools::InstallDebPackage.new('localhost', @opts)
-      expected = "rsync -avz -e \"ssh -p 1234 -i ~/.ssh/id_rsa -l deployer -t -t -o StrictHostKeyChecking=no " \
+      expected = "rsync -avz -e \"ssh -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no " \
                  "-o UserKnownHostsFile=/dev/null\" --progress --partial /tmp/file.deb deployer@localhost:~/"
       expect(install_deb_package.copy_command).to eq(expected)
     end
@@ -25,7 +25,7 @@ describe ServerTools::InstallDebPackage do
       end
       it 'returns the correct command' do
         install_deb_package = ServerTools::InstallDebPackage.new('localhost', @opts)
-        expected = "ssh localhost -p 1234 -i ~/.ssh/id_rsa -l deployer -t -t -o StrictHostKeyChecking=no -o " \
+        expected = "ssh localhost -t -t -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
                    "UserKnownHostsFile=/dev/null sudo dpkg -P deb_package && sudo dpkg -i ~/file.deb"
         expect(install_deb_package.install_command).to eq(expected)
       end
@@ -36,7 +36,7 @@ describe ServerTools::InstallDebPackage do
       end
       it 'returns the correct command' do
         install_deb_package = ServerTools::InstallDebPackage.new('localhost', @opts)
-        expected = "ssh localhost -p 1234 -i ~/.ssh/id_rsa -l deployer -t -t -o StrictHostKeyChecking=no -o " \
+        expected = "ssh localhost -t -t -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
                    "UserKnownHostsFile=/dev/null sudo dpkg -i ~/file.deb"
         expect(install_deb_package.install_command).to eq(expected)
       end
