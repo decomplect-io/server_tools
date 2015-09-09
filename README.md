@@ -6,7 +6,7 @@ Available commands:
 
 - `bootstrap`: Installs Chef on the provided host
 - `provision`: Runs chef with the provided list of roles/recipes
-- `install_deb_package`: Installs a local Debian package on the remote host (optionally purges the older version)
+- `install-deb-package`: Installs a local Debian package on the remote host (optionally purges the older version)
 
 All command line flags can be seen by running `server_tools help`.
 
