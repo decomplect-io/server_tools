@@ -6,14 +6,14 @@ module ServerTools
     end
 
     def command
-      <<-COMMAND
-        bundle exec knife bootstrap #{hostname}
-        --identity-file #{options[:identity_file]}
-        --ssh-port #{options[:ssh_port]}
-        --ssh-user #{options[:ssh_user]}
-        --sudo
-        --local-mode
-      COMMAND
+      [
+        "bundle exec knife bootstrap #{hostname}",
+        "--identity-file #{options[:identity_file]}",
+        "--ssh-port #{options[:ssh_port]}",
+        "--ssh-user #{options[:ssh_user]}",
+        "--sudo",
+        "--local-mode"
+      ].join(' ')
     end
 
     private

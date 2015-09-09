@@ -9,14 +9,13 @@ module ServerTools
     end
 
     def copy_command
-      <<-COMMAND
-        rsync -avz
-        -e "ssh #{ssh_opts(options)}"
-        --progress
-        --partial
-        #{options[:deb_package_file]}
-        #{options[:ssh_user]}@#{hostname}:~/
-      COMMAND
+      [
+        "rsync -avz",
+        %(-e "ssh #{ssh_opts(options)}"),
+        "--progress --partial",
+        "#{options[:deb_package_file]}",
+        "#{options[:ssh_user]}@#{hostname}:~/"
+      ].join(' ')
     end
 
     def install_command

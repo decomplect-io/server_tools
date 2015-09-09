@@ -1,10 +1,8 @@
 require 'bundler/setup'
 require 'mixlib/shellout'
-require 'active_support/core_ext/string'
 
 module ShellOut
   def shell_out(cmd, options: {})
-    cmd = cmd.squish
     opts = options.merge(live_stdout: STDOUT, live_stderr: STDERR)
     shellout = Mixlib::ShellOut.new(cmd, opts)
     puts cmd

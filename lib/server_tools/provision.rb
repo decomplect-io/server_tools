@@ -9,11 +9,11 @@ module ServerTools
     end
 
     def command
-      <<-COMMAND
-        ssh #{hostname}
-        #{ssh_opts(options)}
+      [
+        "ssh #{hostname}",
+        "#{ssh_opts(options)}",
         "sudo /usr/bin/chef-client -o'#{options[:roles].join(',')}'"
-      COMMAND
+      ].join(' ')
     end
 
     private
