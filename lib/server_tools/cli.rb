@@ -2,6 +2,7 @@ require 'thor'
 require 'server_tools/support/shell_out'
 require 'server_tools/bootstrap'
 require 'server_tools/provision'
+require 'server_tools/install_deb_package'
 
 module ServerTools
   class CLI < Thor
