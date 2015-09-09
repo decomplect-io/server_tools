@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/decomplect-io/server_tools.svg?branch=master)](https://travis-ci.org/decomplect-io/server_tools)
+[![Gem Version](https://badge.fury.io/rb/server_tools.svg)](http://badge.fury.io/rb/server_tools)
 # Server Tools
 
 A bunch of tools to provision (via Chef) and deploy packages to servers.
