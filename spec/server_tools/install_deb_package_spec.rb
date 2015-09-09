@@ -25,8 +25,8 @@ describe ServerTools::InstallDebPackage do
       end
       it 'returns the correct command' do
         install_deb_package = ServerTools::InstallDebPackage.new('localhost', @opts)
-        expected = "ssh localhost -t -t -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
-                   "UserKnownHostsFile=/dev/null sudo dpkg -P deb_package && sudo dpkg -i ~/file.deb"
+        expected = "ssh localhost -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
+                   "UserKnownHostsFile=/dev/null 'sudo dpkg -P deb_package && sudo dpkg -i ~/file.deb'"
         expect(install_deb_package.install_command).to eq(expected)
       end
     end
@@ -36,8 +36,8 @@ describe ServerTools::InstallDebPackage do
       end
       it 'returns the correct command' do
         install_deb_package = ServerTools::InstallDebPackage.new('localhost', @opts)
-        expected = "ssh localhost -t -t -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
-                   "UserKnownHostsFile=/dev/null sudo dpkg -i ~/file.deb"
+        expected = "ssh localhost -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
+                   "UserKnownHostsFile=/dev/null 'sudo dpkg -i ~/file.deb'"
         expect(install_deb_package.install_command).to eq(expected)
       end
     end

@@ -19,11 +19,11 @@ module ServerTools
     end
 
     def install_command
-      ["ssh #{hostname}", "-t -t", "#{ssh_opts(options)}"].tap do |command|
+      ["ssh #{hostname}", "#{ssh_opts(options)}"].tap do |command|
         if options[:purge_older_version]
-          command << "#{purge_command} && #{_install_command}"
+          command << %('#{purge_command} && #{_install_command}')
         else
-          command << _install_command
+          command << %('#{_install_command}')
         end
       end.join(' ')
     end
