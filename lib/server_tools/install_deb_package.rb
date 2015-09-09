@@ -21,9 +21,11 @@ module ServerTools
 
     def install_command
       ["ssh #{hostname}", "#{ssh_opts(options)}"].tap do |command|
-        command << 'set -e'
-        command << purge_command if options[:purge_older_version]
-        command << "sudo dpkg -i ~/#{File.basename(options[:deb_package_file])}"
+        if options[:purge_older_version]
+          command << "#{purge_command} && #{_install_command}"
+        else
+          command << _install_command
+        end
       end.join(' ')
     end
 
@@ -31,6 +33,10 @@ module ServerTools
 
     def purge_command
       "sudo dpkg -P #{options[:deb_package_name]}"
+    end
+
+    def _install_command
+      "sudo dpkg -i ~/#{File.basename(options[:deb_package_file])}"
     end
 
     attr_reader :hostname, :options
