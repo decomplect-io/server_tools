@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard", "~> 0.8"
   spec.add_development_dependency "redcarpet", "~> 3.3"
 
-  spec.add_dependency "chef", "~> 12.3"
+  spec.add_dependency "chef", "~> 12"
   spec.add_dependency "thor", "~> 0.19"
 end
