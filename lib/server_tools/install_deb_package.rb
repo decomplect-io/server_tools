@@ -35,7 +35,7 @@ module ServerTools
     end
 
     def _install_command
-      "sudo dpkg -i ~/#{File.basename(options[:deb_package_file])}"
+      "sudo dpkg --force-confnew -i ~/#{File.basename(options[:deb_package_file])}"
     end
 
     attr_reader :hostname, :options
