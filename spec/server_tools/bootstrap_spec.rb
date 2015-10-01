@@ -8,7 +8,7 @@ describe ServerTools::Bootstrap do
       ssh_port: '1234'
     }
     bootstrap = ServerTools::Bootstrap.new('localhost', opts)
-    expected = "bundle exec knife bootstrap localhost --identity-file ~/.ssh/id_rsa " \
+    expected = "knife bootstrap localhost --identity-file ~/.ssh/id_rsa " \
                "--ssh-port 1234 --ssh-user deployer --sudo --local-mode"
     expect(bootstrap.command).to eq(expected)
   end
