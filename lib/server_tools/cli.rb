@@ -8,6 +8,10 @@ module ServerTools
   class CLI < Thor
     include ShellOut
 
+    def self.exit_on_failure?
+      true
+    end
+
     class_option :identity_file,
                  desc: 'The private SSH key to use',
                  default: '$HOME/.ssh/id_rsa',
