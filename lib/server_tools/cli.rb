@@ -33,10 +33,10 @@ module ServerTools
     end
 
     desc 'provision HOSTNAME/IP', 'run chef-client on host with given recipes/roles'
-    option :roles,
-           desc: 'The recipes/roles to apply on the host',
-           required: true,
-           type: :array
+    option :chef_client_flags,
+           desc: 'Options passed to chef-client',
+           required: false,
+           type: :string
     def provision(hostname)
       shell_out(ServerTools::Provision.new(hostname, options).command)
     end

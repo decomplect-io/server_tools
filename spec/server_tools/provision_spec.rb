@@ -6,11 +6,11 @@ describe ServerTools::Provision do
       identity_file: '~/.ssh/id_rsa',
       ssh_user: 'deployer',
       ssh_port: '1234',
-      roles: %w(web db)
+      chef_client_flags: '-o role[web],role[db] -E staging'
     }
     provision = ServerTools::Provision.new('localhost', opts)
     expected = "ssh localhost -t -t -p 1234 -i ~/.ssh/id_rsa -l deployer -o StrictHostKeyChecking=no -o " \
-               "UserKnownHostsFile=/dev/null sudo /usr/bin/chef-client -o'web,db'"
+               "UserKnownHostsFile=/dev/null sudo /usr/bin/chef-client -o role[web],role[db] -E staging"
     expect(provision.command).to eq(expected)
   end
 end

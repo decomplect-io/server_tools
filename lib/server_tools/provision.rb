@@ -13,7 +13,7 @@ module ServerTools
         "ssh #{hostname}",
         "-t -t",
         "#{ssh_opts(options)}",
-        "sudo /usr/bin/chef-client -o'#{options[:roles].join(',')}'"
+        "sudo /usr/bin/chef-client #{options[:chef_client_flags]}"
       ].join(' ')
     end
 
