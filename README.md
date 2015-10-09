@@ -7,7 +7,7 @@ A bunch of tools to provision (via Chef) and deploy packages to servers.
 Available commands:
 
 - `bootstrap`: Installs Chef on the provided host. Requires [ChefDK](https://downloads.chef.io/chef-dk/) to be installed.
-- `provision`: Runs chef with the provided list of roles/recipes
+- `provision`: Runs chef with the provided list of flags to chef client
 - `install-deb-package`: Installs a local Debian package on the remote host (optionally purges the older version)
 
 All command line flags can be seen by running `server_tools help`.
